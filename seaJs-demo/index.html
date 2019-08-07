@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CMD经典代表SeaJs</title>
+    <link rel="stylesheet" href="static/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="sea-modules/index.css">
+</head>
+<body>
+    <div class="head">
+        <div class="container">
+            <div class="head_wrap">
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <div class="banner_wrap"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div class="content_wrap"></div>
+        </div>
+    </div>
+
+    <!-- script 因为第三方库需要单独定义，暂没有模块化-->
+    <script src="static/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="static/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="static/plugins/seajs/sea.js"></script>
+    <script>
+        seajs.config({
+            // 路径配置
+            paths: {
+                'modules-base': 'http://localhost:63342/AMD-CMD/seaJs-demo/sea-modules'
+            },
+            // 别名配置（用变量表示文件，解决路径层级过深和实现路径映射）
+            alias:{
+                'head': 'modules-base/head',
+                'banner': 'modules-base/banner',
+                'content': 'modules-base/content',
+                'main': 'modules-base/main',
+            },
+        });
+        seajs.use('main',function(main){
+            main.init()
+        });
+    </script>
+</body>
+</html>
